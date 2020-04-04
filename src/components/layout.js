@@ -1,16 +1,56 @@
-/**
- * Layout component that queries for data
- * with Gatsby's useStaticQuery component
- *
- * See: https://www.gatsbyjs.org/docs/use-static-query/
- */
+import React from 'react';
 
-import React from "react"
-import PropTypes from "prop-types"
-import { useStaticQuery, graphql } from "gatsby"
+import PropTypes from 'prop-types';
+import { useStaticQuery, graphql, Link } from 'gatsby';
+import { Coffee } from 'react-feather';
+import styled, { createGlobalStyle } from 'styled-components';
 
-import Header from "./header"
-import "./layout.css"
+import '../styles/index.scss';
+
+import Header from './Header';
+
+const Footer = styled.footer`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 20px 0;
+`;
+
+const StyledLink = styled(Link)`
+  padding: 0 4px;
+`;
+
+const GlobalStyle = createGlobalStyle`
+body {
+  background: ${(props) => (props.theme.isDark ? '#181818' : '#ffffff')};
+  color: ${(props) => (props.theme.isDark ? '#ffffff' : '#181818')};
+}
+html {
+  background: ${(props) => (props.theme.isDark ? '#181818' : '#ffffff')};
+}
+
+nav.navbar {
+  background: ${(props) => (props.theme.isDark ? '#363636' : '#d4d4d4')};
+  color: ${(props) => (props.theme.isDark ? '#d4d4d4' : '#181818')};
+}
+
+nav .navbar-item, nav .navbar-brand {
+  color: ${(props) => (props.theme.isDark ? '#d4d4d4' : '#181818')};
+}
+
+nav .navbar-item:hover,
+nav .navbar-item:focus,
+nav .navbar-brand:hover,
+nav .navbar-brand:focus {
+  background-color: ${(props) => (props.theme.isDark ? '#292929' : '#c7c7c7')};
+  color: ${(props) => (props.theme.isDark ? '#fff' : '#181818')};
+}
+
+.has-text-light {
+  color: ${(props) => (props.theme.isDark ? '#fff' : '#181818 !important')};
+}
+
+`;
 
 const Layout = ({ children }) => {
   const data = useStaticQuery(graphql`
@@ -21,31 +61,33 @@ const Layout = ({ children }) => {
         }
       }
     }
-  `)
+  `);
 
   return (
     <>
+      <GlobalStyle />
       <Header siteTitle={data.site.siteMetadata.title} />
-      <div
-        style={{
-          margin: `0 auto`,
-          maxWidth: 960,
-          padding: `0 1.0875rem 1.45rem`,
-        }}
-      >
+      <div className="container">
         <main>{children}</main>
-        <footer>
-          © {new Date().getFullYear()}, Built with
-          {` `}
-          <a href="https://www.gatsbyjs.org">Gatsby</a>
-        </footer>
+        <Footer>
+          ©
+          {' '}
+          {new Date().getFullYear()}
+          , Built by
+          {' '}
+          <StyledLink to="/">
+            jilvanx
+          </StyledLink>
+          {' '}
+          <Coffee />
+        </Footer>
       </div>
     </>
-  )
-}
+  );
+};
 
 Layout.propTypes = {
   children: PropTypes.node.isRequired,
-}
+};
 
-export default Layout
+export default Layout;
