@@ -3,6 +3,7 @@ module.exports = {
     title: 'jilvanx',
     description: 'Full-stack developer, developing apps and web pages',
     author: '@jilvanx',
+    siteUrl: 'https://jilvanx.github.io',
   },
   plugins: [
     'gatsby-styled-components-dark-mode',
