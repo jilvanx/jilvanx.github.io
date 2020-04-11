@@ -1,19 +1,24 @@
-import React from 'react';
-
+import React, { useContext } from 'react';
 import PropType from 'prop-types';
-import styled from 'styled-components';
+import { css } from '@emotion/core';
 
-const Hr = styled.hr`
-  width: 80px;
-  margin: 32px auto;
-`;
+import Context from '../store/context';
 
-const Title = ({ children }) => (
-  <>
-    <h1 className="title has-text-centered has-text-light">{children}</h1>
-    <Hr />
-  </>
-);
+const Title = ({ children }) => {
+  const { state } = useContext(Context);
+
+  return (
+    <>
+      <h1 className={`title has-text-centered ${state.isDark ? 'has-text-light' : 'has-text-dark'}`}>{children}</h1>
+      <hr
+        css={css`
+          width: 80px;
+          margin: 32px auto;
+        `}
+      />
+    </>
+  );
+};
 
 Title.propTypes = {
   children: PropType.node.isRequired,

@@ -1,59 +1,27 @@
 import React, { useState, useContext } from 'react';
-
 import { Link } from 'gatsby';
 import PropTypes from 'prop-types';
-import { Code, Sun, Moon } from 'react-feather';
-import styled from 'styled-components';
-import { ThemeManagerContext } from 'gatsby-styled-components-dark-mode';
+
+import { css } from '@emotion/core';
+
+import { Terminal, Sun, Moon } from 'react-feather';
+import Context from '../store/context';
 
 import cv from '../../static/CV_Jilvan_Candido.pdf';
 
-const Button = styled.div`
-  border: 0;
-  background-color: transparent;
-
-  &:active {
-    border: 0;
-    background-color: transparent;
-    outline:none;
-    padding:0;
-  }
-
-  &:focus {
-    border: 0;
-    background-color: transparent;
-    outline:none;
-    padding:0;
-  }
-`;
-
-const SiteTitle = styled.span`
-  margin: 0 5px;
-`;
-
-const Icons = styled.div`
-  cursor: pointer;
-  padding: 5px;
-  align-items: center;
-  justify-content: center;
-  display: flex;
-`;
 
 function Header({ siteTitle }) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const burguerClass = isMenuOpen ? 'is-active' : '';
-  const [isDarkTheme, SetIsDarkTheme] = useState(true);
 
-  const themeContext = useContext(ThemeManagerContext);
-
-  function handleTheme() {
-    SetIsDarkTheme(!isDarkTheme);
-    themeContext.toggleDark();
-  }
+  const { state, dispatch } = useContext(Context);
 
   return (
     <header>
-      <nav className="navbar" role="navigation" aria-label="main navigation">
+      <nav
+        className={`navbar has-shadow ${state.isDark ? 'is-dark' : 'is-light'}`}
+        role="navigation"
+        aria-label="main navigation"
+      >
         <div className="container">
           <div className="navbar-brand">
             <Link
@@ -61,27 +29,27 @@ function Header({ siteTitle }) {
               className="navbar-item is-size-4"
               onClick={() => setIsMenuOpen(false)}
             >
-              <SiteTitle>
-                {siteTitle}
-              </SiteTitle>
-              <Code size={30} />
+              <Terminal size={28} />
+              <span>
+                <strong>{siteTitle}</strong>
+              </span>
+
             </Link>
 
-            <Button
-              className={`navbar-burger burger ${burguerClass}`}
-              aria-label="menu"
-              aria-expanded="false"
+            <div
+              aria-hidden
+              className={`navbar-burger burger ${isMenuOpen ? 'is-active' : ''}`}
               onClick={() => setIsMenuOpen(!isMenuOpen)}
             >
               <span aria-hidden="true" />
               <span aria-hidden="true" />
               <span aria-hidden="true" />
-            </Button>
+            </div>
 
           </div>
 
-          <div className={`navbar-menu ${burguerClass}`}>
-            <div className="navbar-end">
+          <div className={`navbar-menu ${isMenuOpen ? 'is-active' : ''}`}>
+            <div className="navbar-end is-dark has-text-centered">
               <Link
                 to="/"
                 className="navbar-item is-size-5"
@@ -103,10 +71,28 @@ function Header({ siteTitle }) {
               >
                 My Resume
               </a>
-              <Icons>
-                <Sun className={isDarkTheme ? 'is-hidden' : ''} onClick={handleTheme} />
-                <Moon className={isDarkTheme ? '' : 'is-hidden'} onClick={handleTheme} />
-              </Icons>
+              <div
+                aria-hidden
+                className="navbar-item is-size-5"
+                onClick={() => { dispatch({ type: 'TOGGLE_DARK_MODE' }); setIsMenuOpen(!isMenuOpen); }}
+                css={css`
+                  cursor: pointer;
+                  :hover {
+                    -webkit-transform: scale(1.25, 1.25);
+                    transform: scale(1.25, 1.25);
+                  }
+                `}
+              >
+                <Sun
+                  className={state.isDark ? '' : 'is-hidden'}
+                />
+                <Moon
+                  className={state.isDark ? 'is-hidden' : ''}
+                />
+
+              </div>
+
+
             </div>
           </div>
         </div>

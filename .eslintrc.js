@@ -21,13 +21,13 @@ module.exports = {
   parser: "babel-eslint",
   parserOptions: {
     ecmaFeatures: {
-      jsx: true,
+      "jsx": true,
     },
     ecmaVersion: 2018,
     sourceType: 'module',
   },
   plugins: [
-    'react',
+    'react'
   ],
   rules: {
     "max-len": [
@@ -46,7 +46,8 @@ module.exports = {
       }
   ],
   "react/forbid-prop-types": "off",
-  "react/no-unescaped-entities": 0
+  "react/no-unescaped-entities": 0,
+  "import/prefer-default-export": "off"
   },
 };
 

@@ -1,58 +1,19 @@
-import React from 'react';
+import React, { useContext } from 'react';
 
-import PropTypes from 'prop-types';
 import { useStaticQuery, graphql, Link } from 'gatsby';
+import PropTypes from 'prop-types';
 import { Coffee } from 'react-feather';
-import styled, { createGlobalStyle } from 'styled-components';
+import { Global, css } from '@emotion/core';
+import { useTheme } from 'emotion-theming';
+import Context from '../store/context';
 
 import '../styles/index.scss';
 
 import Header from './Header';
 
-const Footer = styled.footer`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin: 20px 0;
-`;
-
-const StyledLink = styled(Link)`
-  padding: 0 4px;
-`;
-
-const GlobalStyle = createGlobalStyle`
-body {
-  background: ${(props) => (props.theme.isDark ? '#181818' : '#ffffff')};
-  color: ${(props) => (props.theme.isDark ? '#ffffff' : '#181818')};
-}
-html {
-  background: ${(props) => (props.theme.isDark ? '#181818' : '#ffffff')};
-}
-
-nav.navbar {
-  background: ${(props) => (props.theme.isDark ? '#363636' : '#d4d4d4')};
-  color: ${(props) => (props.theme.isDark ? '#d4d4d4' : '#181818')};
-}
-
-nav .navbar-item, nav .navbar-brand {
-  color: ${(props) => (props.theme.isDark ? '#d4d4d4' : '#181818')};
-}
-
-nav .navbar-item:hover,
-nav .navbar-item:focus,
-nav .navbar-brand:hover,
-nav .navbar-brand:focus {
-  background-color: ${(props) => (props.theme.isDark ? '#292929' : '#c7c7c7')};
-  color: ${(props) => (props.theme.isDark ? '#fff' : '#181818')};
-}
-
-.has-text-light {
-  color: ${(props) => (props.theme.isDark ? '#fff' : '#181818 !important')};
-}
-
-`;
-
 const Layout = ({ children }) => {
+  const { state } = useContext(Context);
+
   const data = useStaticQuery(graphql`
     query SiteTitleQuery {
       site {
@@ -63,24 +24,75 @@ const Layout = ({ children }) => {
     }
   `);
 
+  const theme = useTheme();
+
   return (
     <>
-      <GlobalStyle />
+      <Global
+        styles={css`
+          html, body {
+            background-color:
+              ${state.isDark ? theme.dark.background : theme.light.background};
+          }
+
+          a {
+            transition: all 300ms ease;
+            &:hover {
+              color: #ffbc6b;
+            }
+          }
+
+        `}
+      />
       <Header siteTitle={data.site.siteMetadata.title} />
       <div className="container">
         <main>{children}</main>
-        <Footer>
-          ©
-          {' '}
-          {new Date().getFullYear()}
-          , Built by
-          {' '}
-          <StyledLink to="/">
-            jilvanx
-          </StyledLink>
-          {' '}
-          <Coffee />
-        </Footer>
+        <footer>
+          <div className={`columns is-mobile is-centered ${state.isDark ? 'has-text-light' : 'has-text-dark'}`}>
+            ©
+            {' '}
+            {new Date().getFullYear()}
+            , Built by
+            {' '}
+            <Link
+              css={css`
+                padding: 0 4px;
+              `}
+              to="/"
+            >
+              jilvanx
+            </Link>
+            <Coffee />
+            <span
+              css={css`
+                margin: 0 4px;
+              `}
+            >
+              with
+            </span>
+            <a
+              href="https://www.gatsbyjs.org"
+              css={css`
+                display: flex;
+                align-items: center;
+                justify-content: center;
+              `}
+            >
+              <span>
+                Gatsby
+              </span>
+              <img
+                css={css`
+                  margin-left: 4px;
+                `}
+                src="https://www.gatsbyjs.org/monogram.svg"
+                alt="Gatsby"
+                width={24}
+              />
+
+            </a>
+          </div>
+        </footer>
       </div>
     </>
   );
