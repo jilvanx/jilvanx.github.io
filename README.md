@@ -30,8 +30,9 @@ $ npm run start
 ## Features 💫
 - Night mode
 - DOS mode (404)
+- Bulma
 - Sass
-- Styled Components 💅
+- emotion 👩‍🎤
 
 ## Author 💻
 

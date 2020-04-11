@@ -1,9 +1,9 @@
 import React, { useContext } from 'react';
 import Helmet from 'react-helmet';
 
-import Title from '../components/Title';
-import Layout from '../components/Layout';
-import SEO from '../components/Seo';
+import Title from '../components/title';
+import Layout from '../components/layout';
+import SEO from '../components/seo';
 
 import Context from '../store/context';
 

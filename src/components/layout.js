@@ -9,7 +9,7 @@ import Context from '../store/context';
 
 import '../styles/index.scss';
 
-import Header from './Header';
+import Header from './header';
 
 const Layout = ({ children }) => {
   const { state } = useContext(Context);
