@@ -34,6 +34,10 @@ $ npm run start
 - Sass
 - emotion 👩‍🎤
 
+## Contributing
+
+If you see any error, other issue that needs to be solved, or another suggestion please do not hesitate to open a pull request and fix it!
+
 ## Author 💻
 
 [jilvanx](https://jilvanx.github.io)
