@@ -1,3 +1,9 @@
+require('dotenv').config({
+  path: `.env.${process.env.NODE_ENV}`,
+});
+
+const { GATSBY_GA_TRACKING_ID } = process.env;
+
 module.exports = {
   siteMetadata: {
     title: 'jilvanx',
@@ -25,7 +31,7 @@ module.exports = {
     {
       resolve: 'gatsby-plugin-google-analytics',
       options: {
-        trackingId: process.env.GATSBY_GA_TRACKING_ID,
+        trackingId: GATSBY_GA_TRACKING_ID,
         head: true,
         anonymize: true,
         respectDNT: true,
@@ -58,6 +64,5 @@ module.exports = {
     'gatsby-plugin-offline',
     'gatsby-plugin-sitemap',
     'gatsby-plugin-sass',
-
   ],
 };

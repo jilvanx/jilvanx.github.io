@@ -1,8 +1,8 @@
 import React, { useContext } from 'react';
 
-import Layout from '../components/layout';
-import Title from '../components/title';
-import SEO from '../components/seo';
+import Layout from '../components/Layout';
+import Title from '../components/Title';
+import SEO from '../components/Seo';
 
 import Context from '../store/context';
 
