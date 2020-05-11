@@ -5,11 +5,11 @@ import PropTypes from 'prop-types';
 import { Coffee } from 'react-feather';
 import { Global, css } from '@emotion/core';
 import { useTheme } from 'emotion-theming';
-import Context from '../store/context';
+import Context from '../../store/context';
 
-import '../styles/index.scss';
+import '../../styles/index.scss';
 
-import Header from './Header';
+import Header from '../Header';
 
 const Layout = ({ children }) => {
   const { state } = useContext(Context);

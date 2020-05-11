@@ -12,7 +12,7 @@ module.exports = {
     siteUrl: 'https://jilvanx.github.io',
     name: 'Jilvan Cândido',
     position: 'Full Stack Software Developer',
-    aboutme: 'I\'m a full stack software developer specializing in modern JavaScript, I work with front-end or back-end to creating apps and web pages. Nowadays I work with React Native and I like a lot. I like study stuffs about technology and development, I\'m continue improve my Javascript stack, with Reactjs, React Native, Node.js.',
+    aboutme: 'I\'m a passionate and enthusiastic developer with experience in full-stack development. I have a wide range of experience starting from designing and building small web sites to architect scale real-time web and mobile apps. I continue improving my Javascript stack, with Reactjs, React Native, and Node.js. I try to expand my area expertise every day and not afraid to learn new things.',
     skills: [
       { name: 'NodeJS', level: 90 },
       { name: 'PHP', level: 80 },

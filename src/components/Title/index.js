@@ -4,7 +4,7 @@ import { css } from '@emotion/core';
 
 import { useTheme } from 'emotion-theming';
 
-import Context from '../store/context';
+import Context from '../../store/context';
 
 const Title = ({ children }) => {
   const theme = useTheme();

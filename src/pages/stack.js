@@ -3,7 +3,7 @@ import Helmet from 'react-helmet';
 
 import Title from '../components/Title';
 import Layout from '../components/Layout';
-import SEO from '../components/Seo';
+import SEO from '../components/SEO';
 
 import Context from '../store/context';
 

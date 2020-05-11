@@ -5,10 +5,7 @@ import PropTypes from 'prop-types';
 import { css } from '@emotion/core';
 
 import { Terminal, Sun, Moon } from 'react-feather';
-import Context from '../store/context';
-
-import cv from '../../static/CV_Jilvan_Candido.pdf';
-
+import Context from '../../store/context';
 
 function Header({ siteTitle }) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -65,7 +62,9 @@ function Header({ siteTitle }) {
                 Stack
               </Link>
               <a
-                href={cv}
+                target="_blank"
+                rel="noopener noreferrer"
+                href="https://resume.io/r/0BQAMWGnD"
                 className="navbar-item is-size-5"
                 onClick={() => setIsMenuOpen(false)}
               >

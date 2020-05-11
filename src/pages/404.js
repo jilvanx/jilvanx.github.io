@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 
 import Layout from '../components/Layout';
 import Title from '../components/Title';
-import SEO from '../components/Seo';
+import SEO from '../components/SEO';
 
 import Context from '../store/context';
 
