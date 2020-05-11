@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import Typical from 'react-typical';
+import Typed from 'react-typed';
 
 import { useStaticQuery, graphql } from 'gatsby';
 import Img from 'gatsby-image';
@@ -35,6 +35,13 @@ const IndexPage = () => {
     }
   `);
 
+  const textLines = [
+    'Software Developer 💻 ',
+    'Software Engineer ⚙️ ',
+    'Full-stack developer 🛠 ',
+    'Front-end developer 🎨 ',
+  ];
+
   return (
     <Layout>
       <SEO title="Home" />
@@ -52,20 +59,7 @@ const IndexPage = () => {
       <p className="subtitle has-text-centered has-text-warning has-text-weight-bold">
         I'm a Software
         {' '}
-        <Typical
-          loop={Infinity}
-          wrapper="b"
-          steps={[
-            'Software Developer 💻 ',
-            3000,
-            'Software Engineer ⚙️ ',
-            3000,
-            'Full-stack developer 🛠 ',
-            3000,
-            'Front-end developer 🎨 ',
-            3000,
-          ]}
-        />
+        <Typed strings={textLines} typeSpeed={120} loop />
       </p>
 
 
