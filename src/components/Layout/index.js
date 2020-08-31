@@ -85,7 +85,7 @@ const Layout = ({ children }) => {
                 css={css`
                   margin-left: 4px;
                 `}
-                src="https://www.gatsbyjs.org/monogram.svg"
+                src="https://www.gatsbyjs.com/Gatsby-Monogram.svg"
                 alt="Gatsby"
                 width={24}
               />

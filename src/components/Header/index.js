@@ -7,6 +7,8 @@ import { css } from '@emotion/core';
 import { Terminal, Sun, Moon } from 'react-feather';
 import Context from '../../store/context';
 
+import curriculum from '../../assets/CV_Jilvan_Candido.pdf';
+
 function Header({ siteTitle }) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
@@ -64,7 +66,7 @@ function Header({ siteTitle }) {
               <a
                 target="_blank"
                 rel="noopener noreferrer"
-                href="https://resume.io/r/0BQAMWGnD"
+                href={curriculum}
                 className="navbar-item is-size-5"
                 onClick={() => setIsMenuOpen(false)}
               >
@@ -90,7 +92,6 @@ function Header({ siteTitle }) {
                 />
 
               </div>
-
 
             </div>
           </div>

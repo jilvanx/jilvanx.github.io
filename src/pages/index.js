@@ -57,11 +57,10 @@ const IndexPage = () => {
       <h1 className={`title has-text-centered ${state.isDark ? 'has-text-light' : 'has-text-dark'}`}>{data.site.siteMetadata.name}</h1>
 
       <p className="subtitle has-text-centered has-text-warning has-text-weight-bold">
-        I'm a Software
+        I'm a
         {' '}
         <Typed strings={textLines} typeSpeed={120} loop />
       </p>
-
 
       <div className="columns is-mobile is-centered">
         <div className="column is-narrow has-text-centered">
@@ -103,6 +102,5 @@ const IndexPage = () => {
     </Layout>
   );
 };
-
 
 export default IndexPage;

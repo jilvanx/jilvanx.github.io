@@ -1,7 +1,6 @@
 import { useReducer } from 'react';
 import storage from 'local-storage-fallback';
 
-
 const reducer = (state, action) => {
   switch (action.type) {
     case 'TOGGLE_DARK_MODE':
