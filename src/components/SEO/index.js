@@ -38,6 +38,10 @@ function SEO({
       titleTemplate={`%s | ${site.siteMetadata.title}`}
       meta={[
         {
+          name: 'google-site-verification',
+          content: 'R2MX6lkzitxXhhFYT-ogcOqPxrkwjXwBj9-bT2Npw-4',
+        },
+        {
           name: 'description',
           content: metaDescription,
         },
